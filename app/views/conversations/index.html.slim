@@ -1,0 +1,6 @@
+.container
+  h2 Conversation
+  =link_to 'Reload', conversations_path, type: 'button', class: 'btn btn-danger'
+  .row
+    .col-lg-12
+      =render @conversations

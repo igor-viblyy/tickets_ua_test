@@ -1,0 +1,37 @@
+inherit_gem:
+  rubocop-rails:
+    - config/rails.yml
+
+AllCops:
+  TargetRubyVersion: 2.4
+
+# Check quotes usage according to lint rule below.
+Style/StringLiterals:
+  Enabled: false
+  EnforcedStyle: double_quotes
+
+# Blank lines should not have any spaces.
+Layout/TrailingBlankLines:
+  Enabled: false
+
+# No extra empty lines.
+Layout/EmptyLines:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: always
+  Include:
+    - 'activesupport/**/*'
+    - 'activemodel/**/*'
+    - 'actioncable/**/*'
+    - 'activejob/**/*'
+    - 'activerecord/**/*'
+    - 'actionmailer/**/*'
+    - 'actionview/**/*'
+    - 'actionpack/**/*'
+  Exclude:
+    - 'actionview/test/**/*.builder'
+    - 'actionview/test/**/*.ruby'
+    - 'actionpack/test/**/*.builder'
+    - 'actionpack/test/**/*.ruby'

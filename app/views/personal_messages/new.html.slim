@@ -1,0 +1,12 @@
+h1
+  |New message to &nbsp;
+  =@receiver.name
+
+=form_for @personal_message do |f|
+  =hidden_field_tag 'receiver_id', @receiver.id
+  .form-group
+    =f.label :body, class: 'form-control-label'
+    =f.text_area :body, class: 'form-control'
+
+  .form-group
+    =f.submit class: 'btn btn-primary'

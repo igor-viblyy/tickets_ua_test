@@ -1,0 +1,22 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  =link_to "Admin Correspondence System", admin_root_path, class: 'navbar-brand'
+  button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+    span.navbar-toggler-icon
+
+  .collapse.navbar-collapse id="navbarSupportedContent"
+    ul.navbar-nav.mr-auto
+      li.nav-item.active
+        =link_to "Home", admin_root_path, class: 'nav-link'
+        span.sr-only (current)
+      li.nav-item
+        =link_to "Users", admin_users_path, class: 'nav-link'
+
+    ul.navbar-nav.md-auto
+      -if admin_signed_in?
+        li.nav-item
+          .nav-link=current_admin.email
+        li.nav-item
+          =link_to 'Log out', destroy_admin_session_path, method: :delete, class: 'nav-link'
+      -else
+        li.nav-item
+          =link_to 'Sign_in', new_admin_session_path, class: 'nav-link'

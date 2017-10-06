@@ -1,0 +1,12 @@
+.alert.alert-success.alert-dismissible.fade.show role="alert"
+  button.close type="button" data-dismiss="alert" aria-label="Close"
+    span aria-hidden="true" &times;
+
+  -if @count > 0
+    strong
+      | You have a&nbsp;
+      =link_to @count, conversations_path
+      | &nbsp;messages
+  -else
+    strong
+      | You have a 0 messages

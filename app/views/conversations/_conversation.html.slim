@@ -1,0 +1,8 @@
+.card
+  .card-header
+    .card-title
+      h3=conversation.with(current_user).name
+  .card-body
+    p=conversation.personal_messages.last.body.truncate(50)
+    p
+      =link_to 'View conversation', conversation_path(conversation), type: 'button', class: 'btn btn-primary'

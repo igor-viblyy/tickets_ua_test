@@ -1,0 +1,8 @@
+=simple_form_for [:admin, @user] do |f|
+  =f.error_notification
+  .form-group
+    =f.input :email, label: false, placeholder: 'Email', input_html: { class: 'form-control' }
+  .form-group
+    =f.input :encrypted_password, required: true, label: false, placeholder: 'Password', input_html: { class: 'form-control' }
+  .form-group
+    =f.submit class: 'btn btn-primary'

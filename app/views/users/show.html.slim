@@ -1,0 +1,10 @@
+h2
+  | Profile &nbsp;
+  =current_user.name
+
+div
+  =current_user.email
+
+.button-group role='group' aria-label='buttons'
+  =link_to 'Back', root_path, type: 'button', class: 'btn btn-secondary'
+  =link_to 'Edit', edit_user_registration_url(current_user), type: 'button', class: 'btn btn-secondary'
