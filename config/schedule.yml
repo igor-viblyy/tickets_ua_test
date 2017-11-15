@@ -1,0 +1,4 @@
+reloader:
+  cron: "10 * * * *"
+  class: "ReloaderWorker"
+  # queue: default

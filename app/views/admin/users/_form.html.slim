@@ -1,8 +1,12 @@
-=simple_form_for [:admin, @user] do |f|
-  =f.error_notification
+= simple_form_for [:admin, @user] do |f|
+  = f.error_notification
   .form-group
-    =f.input :email, label: false, placeholder: 'Email', input_html: { class: 'form-control' }
+    = f.input :email, label: false, placeholder: 'Email', input_html: { class: 'form-control' }
   .form-group
-    =f.input :encrypted_password, required: true, label: false, placeholder: 'Password', input_html: { class: 'form-control' }
+    = f.input :password, required: true, label: false, placeholder: 'Password', input_html: { class: 'form-control' }
   .form-group
-    =f.submit class: 'btn btn-primary'
+    = f.input :password_confirmation, required: true, label: false, placeholder: 'Password confirmation', input_html: { class: 'form-control' }
+  .form-group
+    .btn-group role="group" aria-label="buttons"
+      = f.submit 'Update User', class: 'btn btn-primary'
+      = link_to "Back", admin_users_path, type: 'button', class: 'btn btn-success'

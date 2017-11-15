@@ -28,24 +28,25 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
   @skip = false
 
   def skip_notifications!()
-   skip_confirmation_notification!
-   @skip = true
+    skip_confirmation_notification!
+    @skip = true
   end
 
   def email_changed?
-   return false if @skip
-   super
+    return false if @skip
+    super
   end
 
   def encrypted_password_changed?
-   return false if @skip
-   super
+    return false if @skip
+    super
   end
 
   def name
-   email.split('@')[0]
+    email.split('@')[0]
   end
 end

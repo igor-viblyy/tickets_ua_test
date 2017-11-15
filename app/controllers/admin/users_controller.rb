@@ -1,5 +1,4 @@
 class Admin::UsersController < Admin::BaseController
-
   layout 'layouts/admin_application'
 
   before_action :find_user, only: %i[edit update destroy]
@@ -15,7 +14,7 @@ class Admin::UsersController < Admin::BaseController
 
   def create
     # This is hack a new user from Devise gem
-    sql = sql = "insert into users (encrypted_password,email, created_at,updated_at) values(
+    sql = "insert into users (encrypted_password,email, created_at,updated_at) values(
         #{ActiveRecord::Base.connection.quote(user_params[:encrypted_password])},
         #{ActiveRecord::Base.connection.quote(user_params[:email])},now(), now())"
     ActiveRecord::Base.connection.execute(sql)
@@ -27,7 +26,6 @@ class Admin::UsersController < Admin::BaseController
 
   def update
     if @user.update!(user_params)
-
       redirect_to admin_users_path, notice: 'User has updated'
     else
       render @edit, error: "Error #{error_notification}"
@@ -40,19 +38,33 @@ class Admin::UsersController < Admin::BaseController
   end
 
   private
-
-  def find_user
-    @user = User.find(params[:id])
-  end
-
-  def user_params
-    params.require(:user).permit(:email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :sign_in_count, :current_sign_in_at, :last_sign_in_at, :current_sign_in_ip, :last_sign_in_ip, :created_at, :updated_at)
-  end
-
-  def allow_without_password
-    if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
-      params[:user].delete(:password)
-      params[:user].delete(:password_confirmation)
+    def find_user
+      @user = User.find(params[:id])
     end
-  end
+
+    def user_params
+      params.require(:user).permit(:email,
+                                   :encrypted_password,
+                                   :reset_password_token,
+                                   :reset_password_sent_at,
+                                   :remember_created_at,
+                                   :sign_in_count,
+                                   :current_sign_in_at,
+                                   :last_sign_in_at,
+                                   :current_sign_in_ip,
+                                   :last_sign_in_ip,
+                                   :created_at,
+                                   :updated_at,
+                                   :password,
+                                   :password_confirmation)
+    end
+
+    def allow_without_password
+      if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+        params[:user].delete(:password)
+        params[:user].delete(:password_confirmation)
+      else
+        @user.encrypted_password.crypt(user_params[:password])
+      end
+    end
 end

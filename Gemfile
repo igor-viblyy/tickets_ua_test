@@ -8,7 +8,7 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
-# Use sqlite3 as the database for Active Record
+# Use postgresql as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
@@ -26,7 +26,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 3.0'
+gem 'redis'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -39,7 +39,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'faker'
   gem 'rspec-rails'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
@@ -72,3 +72,4 @@ gem 'simple_form'
 gem 'bootstrap', '~> 4.0.0.beta'
 gem 'jquery-rails'
 gem 'sidekiq'
+gem 'sidekiq-cron', '~> 0.6.3'

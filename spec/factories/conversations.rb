@@ -9,7 +9,7 @@
 #  updated_at  :datetime         not null
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :conversation do
     author_id 1
     receiver_id 1

@@ -5,6 +5,5 @@ class BaseController < ApplicationController
     @conversations = Conversation.participating(current_user).order('updated_at DESC')
 
     @count = @conversations.count
-
   end
 end

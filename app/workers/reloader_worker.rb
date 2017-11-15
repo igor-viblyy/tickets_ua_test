@@ -6,5 +6,4 @@ class ReloaderWorker
     user = User.find(user_id)
     @conversations = Conversation.participating(user).order('updated_at DESC').reload
   end
-
 end
